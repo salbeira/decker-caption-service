@@ -88,7 +88,6 @@ function onListening() {
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
   var wss = new ws.WebSocketServer({
-    server: server,
     path: "/api/websocket",
     port: 3001,
   });
