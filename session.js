@@ -79,11 +79,11 @@ module.exports.updateSession = function (hash, value) {
   }
 };
 
-module.exports.cleanup() = function() {
+module.exports.cleanup = function () {
   let now = Date.now();
-  for(let session in sessions) {
-    if(now - sessions[session].last_action > 1000 * 60 * 15) {
+  for (let session in sessions) {
+    if (now - sessions[session].last_action > 1000 * 60 * 15) {
       delete sessions[session];
     }
   }
-}
+};
