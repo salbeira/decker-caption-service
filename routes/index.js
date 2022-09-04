@@ -12,7 +12,7 @@ router.get("/host/:session_id", function (req, res, next) {
   res.render("host", { session_id: req.params.session_id });
 });
 
-router.get("/:session_id", function (req, res, next) {
+router.get("/session/:session_id", function (req, res, next) {
   res.render("listen", { session_id: req.params.session_id });
 });
 
