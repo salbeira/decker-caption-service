@@ -91,7 +91,7 @@ function onListening() {
   debug("Listening on " + bind);
   var wss = new ws.WebSocketServer({
     path: "/api/websocket",
-    port: config.application_port || "3101",
+    port: config.websocket_port || "3101",
   });
   wss.on("connection", function connection(ws) {
     ws.on("message", function message(data) {
