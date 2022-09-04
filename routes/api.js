@@ -14,6 +14,7 @@ router.post("/session/:session_id/update", function (req, res, next) {
   let id = req.params.session_id;
   let session = sessions.getSession(id);
   if (!session) {
+    console.log(id);
     res.status(404);
     res.end();
     return;
