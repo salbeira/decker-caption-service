@@ -5,8 +5,13 @@
 
   let url = document.URL;
   url = new URL(url);
-  let id = url.pathname.substring(1);
-  url = "wss://" + url.hostname + "/api/websocket";
+  let paths = url.pathname.split("/");
+  let id = paths[paths.length - 1];
+  let subpath = "/";
+  for (let i = 0; i < paths.length - 2; i++) {
+    subpath += paths[i];
+  }
+  url = "wss://" + url.hostname + subpath + "/api/websocket";
   let socket = new WebSocket(url);
   let message = { session: id };
   socket.addEventListener("open", function (event) {
