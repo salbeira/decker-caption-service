@@ -166,7 +166,7 @@ qrcodeButton.addEventListener("click", () => {
   while (qrcodeDiv.lastChild) {
     qrcodeDiv.removeChild(qrcodeDiv.firstChild);
   }
-  const url = "https://" + connection.server + "sessions/" + connection.session;
+  const url = connection.server + "sessions/" + connection.session;
   new QRCode(qrcodeDiv, url);
   dialog.showModal();
 });
