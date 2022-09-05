@@ -1,4 +1,5 @@
 {
     "application_port": 3100,
-    "websocket_port": 3101
+    "websocket_port": 3101,
+    "base-url": ""
 }

@@ -81,12 +81,42 @@ function createSpan() {
 }
 
 function updateCaptionContent(text) {
+  if (!text) return;
+  if (connection) {
+    fetch(
+      `${connection.server}/api/session/${this.connection.session}/update`,
+      {
+        mode: connection.cors,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: this.connection.token, text: text }),
+      }
+    ).catch((error) => {
+      console.error(error);
+    });
+  }
   if (!currentSpan) createSpan();
   currentSpan.textContent = text;
   area.scrollTo(0, area.scrollHeight);
 }
 
 function finalizeCaptionContent(text) {
+  if (!text) return;
+  if (connection) {
+    fetch(
+      `${this.connection.server}/api/session/${this.connection.session}/final`,
+      {
+        mode: this.connection.cors,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: this.connection.token, text: text }),
+      }
+    );
+  }
   if (!currentSpan) createSpan();
   currentSpan.textContent = text;
   currentSpan.classList.remove("current");
@@ -139,6 +169,9 @@ fullscreenButton.addEventListener("click", () => {
 qrcodeButton.addEventListener("click", () => {
   let dialog = document.getElementById("qrcode-dialog");
   let qrcodeDiv = document.getElementById("qrcode-element");
+  while (qrcodeDiv.lastChild) {
+    qrcodeDiv.removeChild(qrcodeDiv.firstChild);
+  }
   let url = new URL(document.URL);
   let paths = url.pathname.split("/");
   let subpath = "/";
