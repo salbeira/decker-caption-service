@@ -1,7 +1,13 @@
-extends layout
-
-block content
-  header
-    h1 Decker Live-Untertitelung
-  main 
-    text Willkommen zur Decker-Liveuntertitelung. Dieser kostenlose Dienst erlaubt es mithilfe eines Browsers mit Unterstützung für Spracherkennung Live während Ihrer Veranstaltung Untertitel zu erstellen, die Teilnehmer mit Hörschwierigkeiten entweder auf einem separaten Bildschirm oder auf ihrem mitgebrachten Mobilgerät verfolgen können.
+doctype html
+html
+  head
+    title Decker Live-Untertitelung
+    link(rel='stylesheet', href='./stylesheets/style.css')
+  body 
+    header
+      h1 Decker Live-Untertitelung
+    main 
+      div
+        text Willkommen zur Decker-Liveuntertitelung. Dieser kostenlose Dienst erlaubt es mithilfe eines Browsers mit Unterstützung für Spracherkennung Live während Ihrer Veranstaltung Untertitel zu erstellen, die Teilnehmer mit Hörschwierigkeiten entweder auf einem separaten Bildschirm oder auf ihrem mitgebrachten Mobilgerät verfolgen können.
+      div 
+        a(href="./host/") Eine neue Sitzung eröffnen

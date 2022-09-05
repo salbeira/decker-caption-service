@@ -5,11 +5,11 @@ var sessions = require("../session");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "WebSocketTest" });
+  res.render("index", { title: "Decker Live-Captioning" });
 });
 
-router.get("/host/:session_id", function (req, res, next) {
-  res.render("host", { session_id: req.params.session_id });
+router.get("/host/", function (req, res, next) {
+  res.render("host", {});
 });
 
 router.get("/session/:session_id", function (req, res, next) {

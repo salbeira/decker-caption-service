@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= "Hosting " + session_id
+    link(rel='stylesheet', href='../stylesheets/listen.css')
+    link(rel='stylesheet', href='../stylesheets/fontawesome/css/all.css')
+  body
+    div(class="area")
+    button(class="fullscreen")
+        i(class="fas fa-expand")
+    button(class="qrcode")
+        i(class="fas fa-qrcode")
+    script(src="../javascripts/session-client.js") 
+    script(src="../javascripts/caption.js")
+    script(src="../javascripts/qrcode.min.js")
+    dialog#qrcode-dialog
+        div#qrcode-element
+        button#qrcode-confim(onclick="closeQRCodeDialog()") Schließen
+    dialog#error-dialog
+        div#error-dialog-message
+        button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen
