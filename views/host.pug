@@ -14,8 +14,10 @@ html
     script(src="../javascripts/caption.js")
     script(src="../javascripts/qrcode.min.js")
     dialog#qrcode-dialog
-        div#qrcode-element
-        button#qrcode-confim(onclick="closeQRCodeDialog()") Schließen
+        div.container
+            div#qrcode-element
+            button#qrcode-confim(onclick="closeQRCodeDialog()") Schließen
     dialog#error-dialog
-        div#error-dialog-message
-        button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen
+        div.container
+            div#error-dialog-message
+            button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen
