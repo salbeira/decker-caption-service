@@ -83,17 +83,14 @@ function createSpan() {
 function updateCaptionContent(text) {
   if (!text) return;
   if (connection) {
-    fetch(
-      `${connection.server}/api/session/${this.connection.session}/update`,
-      {
-        mode: connection.cors,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token: this.connection.token, text: text }),
-      }
-    ).catch((error) => {
+    fetch(`${connection.server}/api/session/${connection.session}/update`, {
+      mode: connection.cors,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: connection.token, text: text }),
+    }).catch((error) => {
       console.error(error);
     });
   }
@@ -105,17 +102,14 @@ function updateCaptionContent(text) {
 function finalizeCaptionContent(text) {
   if (!text) return;
   if (connection) {
-    fetch(
-      `${this.connection.server}/api/session/${this.connection.session}/final`,
-      {
-        mode: this.connection.cors,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token: this.connection.token, text: text }),
-      }
-    );
+    fetch(`${connection.server}/api/session/${connection.session}/final`, {
+      mode: connection.cors,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: connection.token, text: text }),
+    });
   }
   if (!currentSpan) createSpan();
   currentSpan.textContent = text;
@@ -146,7 +140,7 @@ function handleResult(event) {
  */
 function handleError(event) {
   console.error(event);
-  finalizeCaptionContent(this.currentSpan?.innerHTML);
+  finalizeCaptionContent(currentSpan?.innerHTML);
 }
 
 /**
@@ -154,7 +148,7 @@ function handleError(event) {
  * want to caption.
  */
 function handleEnd() {
-  this.finalizeCaptionContent(this.currentSpan?.innerHTML);
+  finalizeCaptionContent(currentSpan?.innerHTML);
   speechRecognitionObject.start();
 }
 
