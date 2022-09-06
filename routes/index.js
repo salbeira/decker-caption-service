@@ -14,7 +14,7 @@ router.get("/host/", function (req, res, next) {
 
 router.get("/session/:session_id", function (req, res, next) {
   const id = req.params.session_id;
-  if (!sessions[id]) {
+  if (!sessions.getSession(id)) {
     res.status(404);
     res.render("error", {
       message: "Keine Sitzung mit Kennung " + id + " gefunden.",
