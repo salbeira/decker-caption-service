@@ -166,6 +166,7 @@ fullscreenButton.addEventListener("click", () => {
 qrcodeButton.addEventListener("click", () => {
   if (!SpeechRecognitionImpl) {
     showError("Ihr Browser unterstützt keine Spracherkennung.");
+    return;
   }
   let dialog = document.getElementById("qrcode-dialog");
   let linkDiv = document.getElementById("qrcode-link");
@@ -190,6 +191,10 @@ document.body.addEventListener("fullscreenchange", (event) => {
 });
 
 function showLanguageSelect() {
+  if (!SpeechRecognitionImpl) {
+    showError("Ihr Browser unterstützt keine Spracherkennung.");
+    return;
+  }
   const dialog = document.getElementById("language-select-dialog");
   dialog.showModal();
 }
