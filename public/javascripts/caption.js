@@ -164,6 +164,9 @@ fullscreenButton.addEventListener("click", () => {
 });
 
 qrcodeButton.addEventListener("click", () => {
+  if (!SpeechRecognitionImpl) {
+    showError("Ihr Browser unterstützt keine Spracherkennung.");
+  }
   let dialog = document.getElementById("qrcode-dialog");
   let linkDiv = document.getElementById("qrcode-link");
   let qrcodeDiv = document.getElementById("qrcode-element");
