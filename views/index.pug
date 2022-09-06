@@ -4,6 +4,7 @@ html
     title Decker Live-Untertitelung
     link(rel='stylesheet', href='./stylesheets/style.css')
     link(rel='stylesheet', href='./stylesheets/fontawesome/css/all.css')
+    script(src="./javascripts/index.js") 
   body 
     header
       h1 Decker Live-Untertitelung
@@ -30,4 +31,8 @@ html
         div.column
           span.huge.fas.fa-mobile(title="Mobilgerät Symbol" aria-label="Mobilgerät Symbol" aria-hidden="true")
           span.sr-only Mobilgerät Symbol
-          p Als Zuhörer/-in können Sie einfach mit Ihrem Mobilgerät den präsentierten QR-Code einscannen und an der Sitzung teilnehmen.
+          p Als Zuhörer/-in können Sie einfach mit Ihrem Mobilgerät den präsentierten QR-Code einscannen und an der Sitzung teilnehmen. Alternativ können Sie hier auch nur die ID der Sitzung eingeben und ihr beitreten.
+          div.join
+            input#session-id(placeholder="Sitzungs ID")
+            button#join-button(onclick="join()") Sitzung beitreten
+            

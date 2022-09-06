@@ -48,6 +48,7 @@ main p {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: flex-end;
   column-gap: 1rem;
 }
 
@@ -68,13 +69,35 @@ main p {
   font-size: 8rem;
 }
 
-a.button-like {
+button {
   border-radius: 0.5rem;
   border: 1px solid steelblue;
   background-color: limegreen;
   color: black;
   padding: 1rem;
   text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lime;
+}
+
+button:active {
+  background-color: limegreen;
+}
+
+a.button-like {
+  display: block;
+  border-radius: 0.5rem;
+  border: 1px solid steelblue;
+  background-color: limegreen;
+  color: black;
+  padding: 1rem;
+  text-decoration: none;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -84,4 +107,33 @@ a.button-like:hover {
 
 a.button-like:active {
   background-color: limegreen;
+}
+
+.join {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+input {
+  font-size: 2rem;
+}
+
+@keyframes ping {
+  0% {
+    background: white;
+    outline-offset: 0.25rem;
+  }
+  33% {
+    outline-offset: 0.5rem;
+  }
+  100% {
+    outline-offset: 0.25rem;
+  }
+}
+
+:focus {
+  outline: 2px solid steelblue;
+  outline-offset: 0.25rem;
+  animation: ping 0.33s linear;
 }
