@@ -6,10 +6,10 @@ html
     link(rel='stylesheet', href='../stylesheets/fontawesome/css/all.css')
   body
     div.controls
-      button.fullscreen
-        i.fas.fa-expand
-      button.qrcode
+      button.qrcode(title="QR-Code anzeigen" aria-label="QR-Code anzeigen")
         i.fas.fa-qrcode
+      button.fullscreen(title="Vollbild umschalten" aria-label="Vollbild umschalten")
+        i.fas.fa-expand
     div.area
     script(src="../javascripts/session-client.js") 
     script(src="../javascripts/caption.js")
