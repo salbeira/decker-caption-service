@@ -101,6 +101,7 @@ dialog .container {
   flex-direction: column;
   row-gap: 1rem;
   justify-content: center;
+  align-items: center;
 }
 
 dialog button {
