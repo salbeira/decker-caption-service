@@ -13,7 +13,18 @@ router.get("/host/", function (req, res, next) {
 });
 
 router.get("/session/:session_id", function (req, res, next) {
-  res.render("listen", { session_id: req.params.session_id });
+  const id = req.params.session_id;
+  if (!sessions[id]) {
+    res.status(404);
+    res.render("error", {
+      message: "Keine Sitzung mit Kennung " + id + " gefunden.",
+      error: {
+        status: 404,
+      },
+    });
+    return;
+  }
+  res.render("listen", { session_id: id });
 });
 
 module.exports = router;
