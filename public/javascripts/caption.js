@@ -35,6 +35,8 @@ function closeQRCodeDialog() {
 }
 
 function setupSpeechRecognition(lang) {
+  const dialog = document.getElementById("language-select-dialog");
+  dialog.close();
   if (!SpeechRecognitionImpl) {
     showErrorMessage("Ihr Browser untersützt keine Spracherkennung.");
     return;
@@ -184,7 +186,23 @@ document.body.addEventListener("fullscreenchange", (event) => {
   }
 });
 
-setupSpeechRecognition("de");
+function showLanguageSelect() {
+  const dialog = document.getElementById("language-select-dialog");
+  dialog.showModal();
+}
+
+function selectCustomLanguage() {
+  const input = document.getElementById("language-select-input");
+  const value = input.value;
+  if (!value || value === "") {
+    input.focus();
+    return;
+  }
+  setupSpeechRecognition(value);
+}
+
+showLanguageSelect();
+// setupSpeechRecognition("de");
 
 function debugFillArea() {
   for (let i = 0; i < 200; i++) {

@@ -8,7 +8,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Decker Live-Captioning" });
 });
 
-router.get("/host/", function (req, res, next) {
+router.get("/host", function (req, res, next) {
   res.render("host", {});
 });
 

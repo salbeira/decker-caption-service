@@ -118,3 +118,45 @@ dialog button:hover {
 dialog button:active {
   background-color: greenyellow;
 }
+
+#language-buttons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#language-custom {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 100%;
+}
+
+dialog input {
+  font-size: 1.5rem;
+}
+
+dialog button {
+  padding: 0.5rem;
+}
+
+@keyframes ping {
+  0% {
+    background: white;
+    outline-offset: 0.25rem;
+  }
+  33% {
+    outline-offset: 0.5rem;
+  }
+  100% {
+    outline-offset: 0.25rem;
+  }
+}
+
+:focus {
+  outline: 2px solid steelblue;
+  outline-offset: 0.25rem;
+  animation: ping 0.33s linear;
+}

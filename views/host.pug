@@ -12,7 +12,7 @@ html
         i.fas.fa-expand
     div.area
     script(src="../javascripts/session-client.js") 
-    script(src="../javascripts/caption.js")
+    script(defer src="../javascripts/caption.js")
     script(src="../javascripts/qrcode.min.js")
     dialog#qrcode-dialog
       div.container
@@ -25,3 +25,13 @@ html
       div.container
         div#error-dialog-message
         button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen
+    dialog#language-select-dialog 
+      div.container
+        label(for="language-select-dialog") Sprache auswählen
+        div#language-buttons
+          button#german(onclick="setupSpeechRecognition('de-DE')") Deutsch
+          button#english(onclick="setupSpeechRecognition('en-GB')") English
+        div#language-custom
+          input#language-select-input(placeholder="xx-YY Sprachcode")
+          button#custom(onclick="selectCustomLanguage()") Andere Sprache auswählen
+        
