@@ -169,7 +169,6 @@ qrcodeButton.addEventListener("click", () => {
     qrcodeDiv.removeChild(qrcodeDiv.firstChild);
   }
   const url = connection.server + "/session/" + connection.session;
-  linkDiv.innerText = url;
   new QRCode(qrcodeDiv, url);
   dialog.showModal();
 });
