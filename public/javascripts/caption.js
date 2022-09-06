@@ -38,7 +38,7 @@ function setupSpeechRecognition(lang) {
   const dialog = document.getElementById("language-select-dialog");
   dialog.close();
   if (!SpeechRecognitionImpl) {
-    showErrorMessage("Ihr Browser untersützt keine Spracherkennung.");
+    showError("Ihr Browser untersützt keine Spracherkennung.");
     return;
   }
   speechRecognitionObject = new SpeechRecognitionImpl();
