@@ -6,6 +6,7 @@ var sessions = require("../session");
 const config = require("../config.json");
 
 router.post("/session", function (req, res, next) {
+  sessions.cleanup();
   let session = sessions.newSession();
   if (config["base-url"]) {
     session.server = config["base-url"];

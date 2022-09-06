@@ -1,23 +1,27 @@
 doctype html
 html
   head
-    title= "Hosting " + session_id
-    link(rel='stylesheet', href='../stylesheets/listen.css')
+    title= "Live-Untertitelung"
+    link(rel='stylesheet', href='../stylesheets/captioning.css')
     link(rel='stylesheet', href='../stylesheets/fontawesome/css/all.css')
   body
-    div(class="area")
-    button(class="fullscreen")
-        i(class="fas fa-expand")
-    button(class="qrcode")
-        i(class="fas fa-qrcode")
+    div.controls
+      button.fullscreen
+        i.fas.fa-expand
+      button.qrcode
+        i.fas.fa-qrcode
+    div.area
     script(src="../javascripts/session-client.js") 
     script(src="../javascripts/caption.js")
     script(src="../javascripts/qrcode.min.js")
     dialog#qrcode-dialog
-        div.container
-            div#qrcode-element
-            button#qrcode-confim(onclick="closeQRCodeDialog()") Schließen
+      div.container
+        div#qrcode-message
+          text Live mitlesen:
+        div#qrcode-link
+        div#qrcode-element
+        button#qrcode-confim(onclick="closeQRCodeDialog()") Schließen
     dialog#error-dialog
-        div.container
-            div#error-dialog-message
-            button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen
+      div.container
+        div#error-dialog-message
+        button#error-dialog-confirm(onclick="closeErrorDialog()") Schließen

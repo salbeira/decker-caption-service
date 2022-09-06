@@ -2,11 +2,12 @@ doctype html
 html
   head
     title= "Listening to " + session_id
-    link(rel='stylesheet', href='../stylesheets/listen.css')
+    link(rel='stylesheet', href='../stylesheets/captioning.css')
     link(rel='stylesheet', href='../stylesheets/fontawesome/css/all.css')
   body
-    div(class="area")
-    button(class="fullscreen")
-        i(class="fas fa-expand")
+    div.controls
+      button.fullscreen
+        i.fas.fa-expand
+    div.area
     script(src="../javascripts/session-client.js") 
     script(src="../javascripts/listen.js")

@@ -25,7 +25,7 @@
   };
   client.finalize = (text) => {
     if (!currentSpan) createSpan();
-    currentSpan.textContent = text;
+    currentSpan.textContent = text + " ";
     currentSpan.classList.remove("current");
     currentSpan = undefined;
     area.scrollTo(0, area.scrollHeight);

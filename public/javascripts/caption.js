@@ -64,6 +64,7 @@ function setupSpeechRecognition(lang) {
           window.location.origin !== new URL(connection.server).origin
             ? "cors"
             : "same-origin";
+        document.title = `Live-Untertitelung von ${connection.session}`;
       } else {
         showErrorMessage("Verbindung zum Server fehlgeschlagen.");
       }
@@ -112,7 +113,7 @@ function finalizeCaptionContent(text) {
     });
   }
   if (!currentSpan) createSpan();
-  currentSpan.textContent = text;
+  currentSpan.textContent = text + " ";
   currentSpan.classList.remove("current");
   currentSpan = undefined;
   area.scrollTo(0, area.scrollHeight);
@@ -162,11 +163,13 @@ fullscreenButton.addEventListener("click", () => {
 
 qrcodeButton.addEventListener("click", () => {
   let dialog = document.getElementById("qrcode-dialog");
+  let linkDiv = document.getElementById("qrcode-link");
   let qrcodeDiv = document.getElementById("qrcode-element");
   while (qrcodeDiv.lastChild) {
     qrcodeDiv.removeChild(qrcodeDiv.firstChild);
   }
-  const url = connection.server + "sessions/" + connection.session;
+  const url = connection.server + "/session/" + connection.session;
+  linkDiv.innerText = url;
   new QRCode(qrcodeDiv, url);
   dialog.showModal();
 });
@@ -182,3 +185,9 @@ document.body.addEventListener("fullscreenchange", (event) => {
 });
 
 setupSpeechRecognition("de");
+
+function debugFillArea() {
+  for (let i = 0; i < 200; i++) {
+    finalizeCaptionContent("Lorem Ipsum");
+  }
+}

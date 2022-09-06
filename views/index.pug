@@ -3,11 +3,28 @@ html
   head
     title Decker Live-Untertitelung
     link(rel='stylesheet', href='./stylesheets/style.css')
+    link(rel='stylesheet', href='./stylesheets/fontawesome/css/all.css')
   body 
     header
       h1 Decker Live-Untertitelung
-    main 
+    main
       div
-        text Willkommen zur Decker-Liveuntertitelung. Dieser kostenlose Dienst erlaubt es mithilfe eines Browsers mit Unterstützung für Spracherkennung Live während Ihrer Veranstaltung Untertitel zu erstellen, die Teilnehmer mit Hörschwierigkeiten entweder auf einem separaten Bildschirm oder auf ihrem mitgebrachten Mobilgerät verfolgen können.
-      div 
-        a(href="./host/") Eine neue Sitzung eröffnen
+        p
+          | Willkommen zur Decker-Liveuntertitelung.
+          | Dieser kostenlose Dienst erlaubt es mithilfe eines Browsers mit Unterstützung für Spracherkennung
+          | Untertitel für Ihre Veranstaltung Live zu erstellen und zu teilen.
+        p Teilnehmer/-innen mit Hörschwierigkeiten können die Untertitel
+          | entweder auf einer separaten Präsentationsfläche oder auf ihrem mitgebrachten Mobilgerät verfolgen.
+      div.columns 
+        div.column
+          i.huge.fas.fa-desktop
+          p 
+            | Als Vortragende/-r können Sie hier einfach eine neue Spracherkennungssitzung eröffnen.
+            | Sie können im Aufnahmefenster auf das 
+            i.fas.fa-qrcode 
+            | -Symbol klicken, um Ihre Live-Untertitelung per QR-Code mit Ihren Zuhörer/-innen zu teilen.
+          div 
+            a.button-like(href="./host/") Eine neue Sitzung eröffnen
+        div.column
+          i.huge.fas.fa-mobile
+          p Als Zuhörer/-in können Sie einfach mit Ihrem Mobilgerät den präsentierten QR-Code einscannen und an der Sitzung teilnehmen.
