@@ -52,7 +52,7 @@ function setupSpeechRecognition(lang) {
 
   let url = document.URL;
 
-  fetch("../api/session", {
+  fetch("./api/session", {
     method: "POST",
   })
     .then((response) => response.json())
