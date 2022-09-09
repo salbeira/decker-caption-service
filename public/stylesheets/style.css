@@ -3,6 +3,9 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  /*  background: #1f1f1f; */
+  background: #dfdfdf;
+  color: black;
 }
 
 body {
@@ -10,30 +13,62 @@ body {
   flex-direction: column;
   justify-content: flex-start;
 
-  width: 100%;
+  max-width: 60em;
   height: 100%;
-  margin: 0;
+  margin: auto;
   padding: 0;
-  background: #1f1f1f;
-  color: #dfdfdf;
+  background-color: white;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 header {
+  display: flex;
+  flex-direction: column;
   padding-top: 1rem;
   width: 100%;
   text-align: center;
 }
 
+.logos {
+  max-height: 64px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#tu-logo img {
+  min-width: 36mm;
+}
+
+#hylec-logo img {
+  max-height: 64px;
+}
+
+#inf-logo {
+  width: 128px;
+}
+
 h1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #639a00;
+  width: 100%;
+  color: white;
   font-size: 2.5rem;
   margin: auto;
 }
 
 main {
-  max-width: 60em;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background: white;
+  height: 100%;
 }
 
 a {
@@ -71,9 +106,9 @@ main p {
 
 button {
   border-radius: 0.5rem;
-  border: 1px solid steelblue;
-  background-color: limegreen;
-  color: black;
+  border: 1px solid #ca7406;
+  background-color: #639a00;
+  color: white;
   padding: 1rem;
   text-decoration: none;
   font-size: 1.5rem;
@@ -82,19 +117,19 @@ button {
 }
 
 button:hover {
-  background-color: lime;
+  background-color: #404040;
 }
 
 button:active {
-  background-color: limegreen;
+  background-color: #808080;
 }
 
 a.button-like {
   display: block;
   border-radius: 0.5rem;
-  border: 1px solid steelblue;
-  background-color: limegreen;
-  color: black;
+  border: 1px solid #ca7406;
+  background-color: #639a00;
+  color: white;
   padding: 1rem;
   text-decoration: none;
   font-size: 1.5rem;
@@ -102,11 +137,11 @@ a.button-like {
 }
 
 a.button-like:hover {
-  background-color: lime;
+  background-color: #404040;
 }
 
 a.button-like:active {
-  background-color: limegreen;
+  background-color: #808080;
 }
 
 .join {
@@ -133,7 +168,7 @@ input {
 }
 
 :focus {
-  outline: 2px solid steelblue;
+  outline: 2px solid #ca7406;
   outline-offset: 0.25rem;
   animation: ping 0.33s linear;
 }
