@@ -5,13 +5,28 @@
 
   let url = document.URL;
   url = new URL(url);
+  let protocol;
+  if (url.protocol === "https:") {
+    protocol = "wss";
+  } else if (url.protocol === "http:") {
+    protocol = "ws";
+  }
   let paths = url.pathname.split("/");
   let id = paths[paths.length - 1];
   let subpath = "/";
   for (let i = 0; i < paths.length - 2; i++) {
     subpath += paths[i];
   }
-  url = "wss://" + url.hostname + subpath + "/api/websocket";
+  if (subpath === "/") {
+    subpath = "";
+  }
+  let port = undefined;
+  if (url.port !== "") {
+    port = Number(url.port) + 1;
+  }
+  url = `${protocol}://${url.hostname}${
+    port ? `:${port}` : ""
+  }${subpath}/api/websocket`;
   let socket = new WebSocket(url);
   let message = { session: id };
   socket.addEventListener("open", function (event) {
@@ -29,6 +44,20 @@
     currentSpan.classList.remove("current");
     currentSpan = undefined;
     area.scrollTo(0, area.scrollHeight);
+  };
+  client.status = (status) => {
+    if (status === "timeout") {
+      if (currentSpan) {
+        currentSpan.textContent = currentSpan.textContent + " ";
+        currentSpan.classList.remove("current");
+        currentSpan = undefined;
+      }
+      createSpan();
+      currentSpan.textContent = " [Connection Timeout] ";
+      currentSpan.classList.remove("current");
+      currentSpan = undefined;
+      area.scrollTo(0, area.scrollHeight);
+    }
   };
 
   function createSpan() {

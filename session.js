@@ -44,6 +44,7 @@ class Session {
       };
       socket.send(JSON.stringify(data));
     }
+    socket.on;
   }
 
   disconnect(socket) {
