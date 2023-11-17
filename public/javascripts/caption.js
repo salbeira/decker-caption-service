@@ -11,6 +11,10 @@ if (
 
 let speechRecognitionObject = undefined;
 
+const RESTART_INTERVAL = 2000;
+let lastEvent;
+let defibrilator;
+
 let currentSpan = undefined;
 let area = document.querySelector(".area");
 let fullscreenButton = document.querySelector(".fullscreen");
@@ -75,7 +79,22 @@ function setupSpeechRecognition(lang) {
   speechRecognitionObject.start();
 }
 
-function handleStart() {}
+/**
+ * Stop the speechRecognition if no data comes in for a while.
+ * The handleEnd() function should then restart the recognition as if an error had occurred.
+ */
+function defibrilate() {
+  const now = Date.now();
+  const timeSinceLastEvent = now - lastEvent;
+  if (timeSinceLastEvent > RESTART_INTERVAL) {
+    speechRecognitionObject.abort();
+  }
+}
+
+function handleStart() {
+  lastEvent = Date.now();
+  defibrilator = setInterval(defibrilate, RESTART_INTERVAL);
+}
 
 function createSpan() {
   currentSpan = document.createElement("span");
@@ -127,6 +146,7 @@ function finalizeCaptionContent(text) {
  * @param {*} event
  */
 function handleResult(event) {
+  lastEvent = Date.now();
   for (var i = event.resultIndex; i < event.results.length; i++) {
     if (event.results[i][0].confidence > 0.1) {
       updateCaptionContent(event.results[i][0].transcript);
@@ -142,8 +162,10 @@ function handleResult(event) {
  * @param {*} event
  */
 function handleError(event) {
-  console.error(event);
-  finalizeCaptionContent(currentSpan?.innerHTML);
+  if (!(event.error === "aborted")) {
+    console.error(event);
+    finalizeCaptionContent(currentSpan?.innerHTML);
+  }
 }
 
 /**
@@ -151,6 +173,7 @@ function handleError(event) {
  * want to caption.
  */
 function handleEnd() {
+  clearInterval(defibrilator);
   finalizeCaptionContent(currentSpan?.innerHTML);
   speechRecognitionObject.start();
 }
